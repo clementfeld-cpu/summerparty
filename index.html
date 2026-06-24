@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Voyagerie — Summer Party · Travel Escape</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,800;1,500&family=EB+Garamond:ital@0;1&family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --night:#0c1430; --night-2:#0a1024; --cream:#f4ead2; --cream-dim:#cdbf9f;
+    --gold:#c9a24a; --gold-bright:#e8c26a; --line:rgba(201,162,74,.35);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'EB Garamond',Georgia,serif;color:var(--cream);
+    background:var(--night-2);line-height:1.75;font-size:19px;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 28px}
+  h1,h2,h3,.disp{font-family:'Playfair Display',Georgia,serif}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;min-height:100vh;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;text-align:center;overflow:hidden;
+    padding:80px 20px 64px;background:#0a1024}
+  .hero .bg{position:absolute;inset:0;background:url('assets/fond.png') center/cover no-repeat}
+  .hero .veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,12,30,.30),rgba(8,12,30,.10) 40%,rgba(10,16,36,.85))}
+  .hero .inner{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center}
+  .logo{width:min(680px,90vw);height:auto;filter:drop-shadow(0 12px 34px rgba(0,0,0,.55))}
+  .meta{margin-top:30px;font-family:'Cinzel',serif;letter-spacing:.24em;font-size:13px;
+    color:var(--gold-bright);text-transform:uppercase;text-shadow:0 2px 10px rgba(0,0,0,.7)}
+  .scrollcue{margin-top:42px;color:var(--cream);font-size:12px;letter-spacing:.2em;
+    text-transform:uppercase;font-family:'Cinzel',serif;text-shadow:0 2px 10px rgba(0,0,0,.7)}
+  .scrollcue span{display:block;font-size:22px;margin-top:6px;color:var(--gold-bright);animation:bob 2s infinite}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+
+  /* ---------- INTRO ---------- */
+  .intro{padding:92px 0;border-bottom:1px solid var(--line);
+    background:linear-gradient(180deg,#0a1024,#0c1430)}
+  .intro p{max-width:780px;margin:0 auto;text-align:center;font-size:clamp(20px,2.6vw,27px);
+    font-style:italic;color:var(--cream)}
+  .intro b{font-style:normal;color:var(--gold-bright);font-weight:500}
+
+  /* ---------- JOURNEY ---------- */
+  .journey{position:relative}
+  .path{position:absolute;left:50%;top:0;bottom:0;width:2px;transform:translateX(-50%);
+    background:repeating-linear-gradient(var(--gold) 0 6px,transparent 6px 16px);opacity:.4}
+  @media(max-width:880px){.path{left:24px}}
+
+  .stop{position:relative;padding:80px 0}
+  .stop .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+  .stop:nth-child(even) .visual{order:2}
+  @media(max-width:880px){.stop .wrap{grid-template-columns:1fr;gap:28px}
+    .stop:nth-child(even) .visual{order:0}}
+
+  .visual{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--line);
+    box-shadow:0 26px 64px rgba(0,0,0,.5);line-height:0}
+  .visual img{width:100%;height:auto;display:block}
+  .badge{position:absolute;top:15px;left:15px;z-index:2;font-family:'Cinzel',serif;font-size:11px;
+    letter-spacing:.14em;color:#fff;text-transform:uppercase;border:1px solid rgba(255,255,255,.55);
+    border-radius:999px;padding:5px 13px;background:rgba(8,12,30,.5)}
+
+  .text h2{font-size:clamp(30px,4vw,46px);font-weight:800;color:var(--cream);margin:0 0 2px;line-height:1.05}
+  .text .city{font-style:italic;color:var(--cream-dim);font-size:18px;margin-bottom:18px}
+  .text p.story{font-size:19px;color:#e9ddc0}
+  .hours{margin-top:22px;display:inline-flex;align-items:center;gap:10px;font-family:'Cinzel',serif;
+    font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-bright);
+    border:1px solid var(--line);border-radius:999px;padding:7px 16px}
+  .hours .dot{width:6px;height:6px;border-radius:50%;background:var(--gold-bright)}
+  .note-line{margin-top:11px;font-size:14px;font-style:italic;color:var(--cream-dim)}
+  .lineup{margin-top:26px;display:grid;gap:20px}
+  .set{border-left:2px solid var(--line);padding-left:16px}
+  .set .time{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-bright)}
+  .set .artist{font-family:'Playfair Display',serif;font-weight:700;font-size:19px;color:var(--cream);margin:2px 0 6px}
+  .set p{font-size:16px;color:#d9ccae;line-height:1.6}
+
+  .pathdot{position:absolute;left:50%;top:80px;width:14px;height:14px;border-radius:50%;
+    transform:translateX(-50%);background:var(--gold-bright);box-shadow:0 0 0 5px #0a1024}
+  @media(max-width:880px){.pathdot{left:24px}}
+
+  /* ---------- CLOSING ---------- */
+  .closing{padding:100px 0 56px;text-align:center;border-top:1px solid var(--line);
+    background:linear-gradient(180deg,#0c1430,#0a1024)}
+  .closing h2{font-size:clamp(28px,4vw,44px);color:var(--gold-bright);font-weight:800}
+  .closing p{max-width:620px;margin:16px auto 0;color:var(--cream-dim);font-style:italic;font-size:20px}
+  .passport{margin:38px auto 0;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .pp{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.08em;color:var(--gold);
+    border:1px dashed var(--line);border-radius:50%;width:88px;height:88px;display:flex;
+    align-items:center;justify-content:center;text-align:center;padding:8px;line-height:1.3}
+  .practical{margin-top:46px;font-family:'Cinzel',serif;letter-spacing:.16em;font-size:13px;
+    color:var(--cream);text-transform:uppercase}
+  .practical b{color:var(--gold-bright);font-weight:600}
+  .foot{margin-top:44px;font-family:'Cinzel',serif;letter-spacing:.34em;font-size:14px;color:var(--gold)}
+  .note{max-width:1140px;margin:0 auto;padding:20px 28px 64px;color:#6f7798;font-size:13px;
+    font-style:italic;text-align:center}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="bg"></div>
+  <div class="veil"></div>
+  <div class="inner">
+    <img class="logo" src="assets/logo_la-voyagerie_standalone.png?v=2" alt="La Voyagerie — Summer Party Travel Escape">
+    <div class="meta">Thursday 25 June · From 6 PM</div>
+    <div class="scrollcue">Boarding<span>↓</span></div>
+  </div>
+</header>
+
+<section class="intro">
+  <div class="wrap">
+    <p>La Voyagerie has never been just an office. From day one, it's been a place of curiosity and adventure — a place to escape. On 25 June, <b>we're going to live that for real: intensely, together, and all the way to the end of the night.</b></p>
+  </div>
+</section>
+
+<div class="journey">
+  <div class="path"></div>
+
+  <section class="stop" id="naples">
+    <div class="pathdot"></div>
+    <div class="wrap">
+      <div class="visual">
+        <div class="badge">Ground floor</div>
+        <img src="assets/univers_napoli.png" alt="Trattoria da Ciro, Naples" loading="lazy">
+      </div>
+      <div class="text">
+        <h2>Trattoria da Ciro</h2>
+        <div class="city">Quartieri Spagnoli, Naples</div>
+        <p class="story">In the narrow streets above Via Toledo, Da Ciro has fed the neighbourhood for three generations. The wood-fired oven never stops, the pizza is tossed in the air, and old Ciro still shouts the orders across the room. You share a table, the drinks come fast, and the whole place smells of basil and warm dough. Loud, generous Naples — it makes you feel at home the moment you sit down.</p>
+        <div class="hours"><span class="dot"></span>Pizza &amp; cocktails in the courtyard · from 7 PM</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stop" id="seoul">
+    <div class="pathdot"></div>
+    <div class="wrap">
+      <div class="visual">
+        <div class="badge">1st floor</div>
+        <img src="assets/univers_seoul.png" alt="Byeol Noraebang, Seoul" loading="lazy">
+      </div>
+      <div class="text">
+        <h2>Byeol Noraebang</h2>
+        <div class="city">Hongdae, Seoul</div>
+        <p class="story">Up some neon stairs in Hongdae, Seoul's lively student district, Byeol is the karaoke bar the locals love. Soft booths, a long list of K-pop hits, a tambourine, and a piano in the corner for anyone brave enough. No one is judging — you grab a mic, the room sings along, and the night flies by. Simply the most fun you can have with a songbook.</p>
+        <div class="hours"><span class="dot"></span>Piano bar &amp; karaoke · from 6:30 PM</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stop" id="melbourne">
+    <div class="pathdot"></div>
+    <div class="wrap">
+      <div class="visual">
+        <div class="badge">2nd floor</div>
+        <img src="assets/univers_melbourne.png" alt="The Laneway, Melbourne" loading="lazy">
+      </div>
+      <div class="text">
+        <h2>The Laneway</h2>
+        <div class="city">Melbourne, Australia</div>
+        <p class="story">Hidden down one of Melbourne's painted laneways, behind a plain metal door, The Laneway is a friendly local pub. Exposed brick, an old world map on the wall, fresh beers on tap, and a back room full of pinball, darts and a worn pool table. Grab a beer, lose a game, win the next one. Relaxed and easygoing — the Australian way of taking life lightly.</p>
+        <div class="hours"><span class="dot"></span>Games — by the CSE · from 6:30 PM</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stop" id="buenosaires">
+    <div class="pathdot"></div>
+    <div class="wrap">
+      <div class="visual">
+        <div class="badge">6th floor</div>
+        <img src="assets/univers_buenos-aires.png" alt="Puerta 1928, Buenos Aires" loading="lazy">
+      </div>
+      <div class="text">
+        <h2>Puerta 1928</h2>
+        <div class="city">Palermo, Buenos Aires</div>
+        <p class="story">There's no sign on Puerta 1928 — just a heavy door on a quiet Palermo street. Knock, and another era opens up: brass, green velvet, a long bar and a trio playing soft jazz. There's no cocktail menu — you tell the bartender how you feel, and he makes your drink. A secret kept on purpose, and enjoyed slowly.</p>
+        <div class="hours"><span class="dot"></span>Hidden bar, signature cocktails · 7:30–9:30 PM</div>
+        <div class="note-line">You'll need your secret ticket to reach the 6th floor.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stop" id="berlin">
+    <div class="pathdot"></div>
+    <div class="wrap">
+      <div class="visual">
+        <div class="badge">Basement</div>
+        <img src="assets/univers_berlin.png" alt="Klub Nacht, Berlin" loading="lazy">
+      </div>
+      <div class="text">
+        <h2>Klub Nacht</h2>
+        <div class="city">Berlin</div>
+        <p class="story">In an old boiler room under the street, Klub Nacht is Berlin at its purest: bare concrete, no VIP, no photos — just the music. Fog floats through the lights, the bass fills your chest, and there are no rules. When the beat drops, the whole room moves together. This is where the night turns into a memory.</p>
+        <div class="hours"><span class="dot"></span>Music, dancing, DJs · from 9:30 PM</div>
+        <div class="lineup">
+          <div class="set">
+            <div class="time">9:30 – 11:30 PM</div>
+            <div class="artist">@iammendi_</div>
+            <p>DJ and producer from Montpellier, resident at Piñata Radio and Rinse France. He has played Boiler Room, Solidays, Les Eurockéennes and, this past May, Nuits Sonores in Lyon. A regular at big French clubs like Le Sucre and La Machine du Moulin Rouge, tonight he's at La Voyagerie to get you dancing.</p>
+          </div>
+          <div class="set">
+            <div class="time">11:30 PM – 1:30 AM</div>
+            <div class="artist">@the_gemini_k</div>
+            <p>A well-known queer artist and performer from the Paris scene. Gemini performs through their collective @genderfvck_, which stands for a free and unapologetic kind of party. Also a regular at renowned venues like Wanderlust and Le Transbordeur, tonight they bring their pop-electro world to La Voyagerie.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<section class="closing">
+  <div class="wrap">
+    <h2>One night to taste the world.</h2>
+    <p>No passport needed.</p>
+    <div class="passport">
+      <div class="pp">Naples</div>
+      <div class="pp">Seoul</div>
+      <div class="pp">Melbourne</div>
+      <div class="pp">Buenos Aires</div>
+      <div class="pp">Berlin</div>
+    </div>
+    <div class="practical">Thursday 25 June 2026 · From 6 PM · <b>La Voyagerie</b> · 27 rue de Mogador, Paris 9e</div>
+    <div class="foot">◆ La Voyagerie ◆</div>
+  </div>
+</section>
+
+</body>
+</html>
