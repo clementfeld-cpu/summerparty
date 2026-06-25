@@ -74,6 +74,27 @@
   .set .artist{font-family:'Playfair Display',serif;font-weight:700;font-size:19px;color:var(--cream);margin:2px 0 6px}
   .set p{font-size:16px;color:#d9ccae;line-height:1.6}
 
+  /* ---------- PHOTOS / QR ---------- */
+  .photos{padding:90px 0;border-top:1px solid var(--line);background:linear-gradient(180deg,#0a1024,#0c1430)}
+  .photos-inner{display:grid;grid-template-columns:1fr .92fr;gap:48px;align-items:center}
+  @media(max-width:880px){.photos-inner{grid-template-columns:1fr;gap:40px}}
+  .photos .kick{font-family:'Cinzel',serif;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+  .photos h2{font-size:clamp(28px,4vw,42px);color:var(--cream);font-weight:800;margin:8px 0 14px}
+  .photos .lead{font-size:18px;color:#e9ddc0;max-width:560px}
+  .photos .lead b{color:var(--gold-bright);font-weight:500}
+  .steps{margin:24px 0 0;display:grid;gap:14px}
+  .step{display:flex;gap:14px;align-items:flex-start}
+  .step .n{flex:0 0 auto;width:30px;height:30px;border-radius:50%;border:1px solid var(--line);color:var(--gold-bright);font-family:'Cinzel',serif;font-size:14px;display:flex;align-items:center;justify-content:center}
+  .step .t{font-size:17px;color:var(--cream)}
+  .media{display:flex;align-items:center;justify-content:center;gap:26px}
+  @media(max-width:880px){.media{flex-direction:column;gap:28px}}
+  .qr-block{flex:0 0 auto;text-align:center}
+  .qr-card{display:inline-block;background:#fff;border-radius:14px;padding:14px;box-shadow:0 16px 40px rgba(0,0,0,.45);line-height:0}
+  .qr-card img{width:150px;height:150px;display:block}
+  .qr-block .cap{margin-top:12px;font-family:'Cinzel',serif;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-bright)}
+  .qr-block .cap small{display:block;font-family:'EB Garamond',serif;text-transform:none;letter-spacing:0;color:var(--cream-dim);font-size:13px;margin-top:6px;font-style:italic;max-width:170px;margin-left:auto;margin-right:auto}
+  .shot-img{flex:0 0 auto;width:300px;max-width:62vw;height:auto;display:block;border-radius:18px;filter:drop-shadow(0 26px 54px rgba(0,0,0,.6))}
+
   .pathdot{position:absolute;left:50%;top:80px;width:14px;height:14px;border-radius:50%;
     transform:translateX(-50%);background:var(--gold-bright);box-shadow:0 0 0 5px #0a1024}
   @media(max-width:880px){.pathdot{left:24px}}
@@ -209,6 +230,28 @@
     </div>
   </section>
 </div>
+
+<section class="photos">
+  <div class="wrap photos-inner">
+    <div class="ptext">
+      <div class="kick">Bring the night home</div>
+      <h2>Capture the night</h2>
+      <p class="lead">Tonight comes with its own disposable camera. The whole night is yours to shoot — but you've only got <b>10 shots</b>, so choose your moments. And here's the catch: every photo stays secret until the next day.</p>
+      <div class="steps">
+        <div class="step"><div class="n">1</div><div class="t">Snap the QR code — your camera is ready.</div></div>
+        <div class="step"><div class="n">2</div><div class="t">10 shots per person, from 9 PM to 4 AM.</div></div>
+        <div class="step"><div class="n">3</div><div class="t">All photos will be revealed tomorrow!</div></div>
+      </div>
+    </div>
+    <div class="media">
+      <div class="qr-block">
+        <a class="qr-card" href="https://pov.camera/qr/idRqfDIkXRGdA3QuuV6y"><img src="assets/qr-pov-camera.png" alt="Scan to join the shared camera"></a>
+        <div class="cap">Scan to join<small>Point your phone camera at the code.</small></div>
+      </div>
+      <img class="shot-img" src="assets/mockup-iphone.png" alt="La Voyagerie disposable camera on your phone">
+    </div>
+  </div>
+</section>
 
 <section class="closing">
   <div class="wrap">
